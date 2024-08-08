@@ -36,14 +36,15 @@ fetchData();
 
 async function fetchData() {
     try{
-        const response = await fetch('https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand');
+        var randNum = Math.floor(Math.random() * 100)
+        const response = await fetch(`https://quotesondesign.com/wp-json/wp/v2/posts/?option=${randNum}`);
 
         if(!response.ok){
             throw new Error ("Could not find resource");
         }
 
         const string = await response.json();
-        console.log(string[0])
+        console.log(string)
         
     }
     catch(error){
